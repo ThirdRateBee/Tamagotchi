@@ -2,7 +2,7 @@ public class Tamagotchi()
 {
     private int Hunger = 0;
     private int Boredom = 0;
-    private List<string> Words = ["Hello", "Hate", "I really hate you"];
+    private List<string> Words = ["No!", "Hate!", "I really hate you"];
     private bool Alive = true;
     public string Name = "";
 
@@ -21,7 +21,7 @@ public class Tamagotchi()
     {
         ReduceBoredom();
         int sss = Random.Shared.Next(0, Words.Count);
-        Console.WriteLine(Words[sss]);
+        Console.WriteLine($"{Name}: {Words[sss]}");
     }
     public void Teach()
     {
@@ -45,6 +45,7 @@ public class Tamagotchi()
     }
     public void Stats()
     {
+        Console.WriteLine("-----------------");
         if (Name == "")
         {
             Console.WriteLine($"Name: No name");
@@ -55,6 +56,7 @@ public class Tamagotchi()
         }
         Console.WriteLine($"Hunger:{Hunger}");
         Console.WriteLine($"Boredom:{Boredom}");
+        Console.WriteLine("-----------------");
     }
     public void GetAlive()
     {

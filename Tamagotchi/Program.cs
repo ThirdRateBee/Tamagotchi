@@ -3,6 +3,8 @@
 
 Tamagotchi TamagotchiPet = new Tamagotchi();
 
+TamagotchiPet.NameIt();
+
 while (true)
 {
     TamagotchiPet.Stats();
@@ -18,7 +20,7 @@ void Actions()
     String Choice = Console.ReadLine();
     Choice = Choice.ToLower();
 
-    if (Choice == "hi")
+    if (Choice == "hi" || Choice == "hello" || Choice == TamagotchiPet.Name )
     {
         TamagotchiPet.Hi();
     }
