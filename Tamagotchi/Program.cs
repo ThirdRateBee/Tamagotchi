@@ -12,6 +12,7 @@ while (true)
     Actions();
 
     TamagotchiPet.Tick();
+    TamagotchiPet.AngerManagement();
 }
 
 
@@ -20,7 +21,7 @@ void Actions()
     String Choice = Console.ReadLine();
     Choice = Choice.ToLower();
 
-    if (Choice == "hi" || Choice == "hello" || Choice == TamagotchiPet.Name )
+    if (Choice == "hi"|| Choice == "hello" || Choice == TamagotchiPet.Name || Choice == $"hi {TamagotchiPet.Name}" || Choice == $"hello {TamagotchiPet.Name}" )
     {
         TamagotchiPet.Hi();
     }

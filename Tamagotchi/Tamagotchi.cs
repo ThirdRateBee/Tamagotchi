@@ -2,7 +2,9 @@ public class Tamagotchi()
 {
     private int Hunger = 0;
     private int Boredom = 0;
-    private List<string> Words = ["No!", "Hate!", "I really hate you"];
+    private int Anger = 0;
+    private List<string> AngryWords = ["No!", "Hate!", "I really hate you"];
+    private List<string> Words = ["Hello!", "Nice!", "Ur so kind!"];
     private bool Alive = true;
     public string Name = "";
 
@@ -20,20 +22,27 @@ public class Tamagotchi()
     public void Hi()
     {
         ReduceBoredom();
-        int sss = Random.Shared.Next(0, Words.Count);
-        Console.WriteLine($"{Name}: {Words[sss]}");
+        if (Name == "loser" || Name == "ugly" || Name == "fat" || Name == "idiot")
+        {
+            Console.WriteLine($"{Name}: {AngryWords[Random.Shared.Next(AngryWords.Count)]}");  
+
+        }
+        else
+        {
+            Console.WriteLine($"{Name}: {Words[Random.Shared.Next(AngryWords.Count)]}");    
+        }
     }
     public void Teach()
     {
         Console.WriteLine("What do you want to teach!");
         String Choice = Console.ReadLine();
-        Words.Add(Choice);
+        AngryWords.Add(Choice);
     }
     public void NameIt()
     {
         Console.WriteLine("What do you want to name it!");
         String Choice = Console.ReadLine();
-        Name = Choice;
+        Name = Choice.ToLower();
     }
     public void ReduceBoredom()
     {
@@ -41,6 +50,13 @@ public class Tamagotchi()
         if (Boredom < 0)
         {
             Boredom = 0;
+        }
+    }
+    public void AngerManagement()
+    {
+        if (Name == "loser" || Name == "ugly" || Name == "fat" || Name == "idiot")
+        {
+            Anger ++;    
         }
     }
     public void Stats()
@@ -56,6 +72,7 @@ public class Tamagotchi()
         }
         Console.WriteLine($"Hunger:{Hunger}");
         Console.WriteLine($"Boredom:{Boredom}");
+        Console.WriteLine($"Anger level:{Anger}");
         Console.WriteLine("-----------------");
     }
     public void GetAlive()
