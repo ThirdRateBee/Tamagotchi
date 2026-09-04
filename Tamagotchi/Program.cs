@@ -5,9 +5,16 @@ Tamagotchi TamagotchiPet = new Tamagotchi();
 
 while (true)
 {
+    TamagotchiPet.Stats();
+
+    Actions();
 
     TamagotchiPet.Tick();
-    TamagotchiPet.Stats();
+}
+
+
+void Actions()
+{
     String Choice = Console.ReadLine();
     Choice = Choice.ToLower();
 
@@ -15,7 +22,16 @@ while (true)
     {
         TamagotchiPet.Hi();
     }
-   
+    else if (Choice == "feed")
+    {
+        TamagotchiPet.Feed();
+    }
+    else if (Choice == "teach")
+    {
+        TamagotchiPet.Teach();
+    }
+    else if (Choice == "alive")
+    {
+        TamagotchiPet.GetAlive();
+    }
 }
-
-
