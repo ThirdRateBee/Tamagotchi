@@ -4,9 +4,7 @@ public class Tamagotchi()
     private int Boredom = 0;
     private List<string> Words = ["Hello", "Hate", "I really hate you"];
     private bool Alive = true;
-    private int one = 1;
-    public string Name;
-    static public double seconds;
+    public string Name = "";
 
     public void Tick()
     {
@@ -15,12 +13,10 @@ public class Tamagotchi()
         Boredom++;
 
     }
-
     public void Feed()
     {
         Hunger = 0;
     }
-
     public void Hi()
     {
         ReduceBoredom();
@@ -33,6 +29,12 @@ public class Tamagotchi()
         String Choice = Console.ReadLine();
         Words.Add(Choice);
     }
+    public void NameIt()
+    {
+        Console.WriteLine("What do you want to name it!");
+        String Choice = Console.ReadLine();
+        Name = Choice;
+    }
     public void ReduceBoredom()
     {
         Boredom -= 2;
@@ -41,9 +43,16 @@ public class Tamagotchi()
             Boredom = 0;
         }
     }
-
     public void Stats()
     {
+        if (Name == "")
+        {
+            Console.WriteLine($"Name: No name");
+        }
+        else
+        {
+            Console.WriteLine($"Name:{Name}");
+        }
         Console.WriteLine($"Hunger:{Hunger}");
         Console.WriteLine($"Boredom:{Boredom}");
     }
@@ -57,7 +66,7 @@ public class Tamagotchi()
         {
             Console.WriteLine("it's alive!");
         }
-        else 
+        else
         {
             Console.WriteLine("it's Dead...");
         }

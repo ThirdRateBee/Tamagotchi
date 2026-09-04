@@ -34,4 +34,8 @@ void Actions()
     {
         TamagotchiPet.GetAlive();
     }
+    else if (Choice == "name")
+    {
+        TamagotchiPet.NameIt();
+    }
 }
