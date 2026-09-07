@@ -1,27 +1,41 @@
 ﻿
 
-
 Tamagotchi TamagotchiPet = new Tamagotchi();
+
+bool end = true;
 
 TamagotchiPet.NameIt();
 
-while (true)
+while (end)
 {
-    TamagotchiPet.Stats();
-
-    Actions();
-
-    TamagotchiPet.Tick();
-    TamagotchiPet.AngerManagement();
+    PlayGame();
 }
+Dead();
 
+void PlayGame()
+{
+    if (TamagotchiPet.Alive == true)
+    {
+        TamagotchiPet.Stats();
+
+        Actions();
+
+        TamagotchiPet.Tick();
+        TamagotchiPet.AngerManagement();
+        TamagotchiPet.GetAlive();
+    }
+    else
+    {
+        end = false;
+    }
+}
 
 void Actions()
 {
     String Choice = Console.ReadLine();
     Choice = Choice.ToLower();
 
-    if (Choice == "hi"|| Choice == "hello" || Choice == TamagotchiPet.Name || Choice == $"hi {TamagotchiPet.Name}" || Choice == $"hello {TamagotchiPet.Name}" )
+    if (Choice == "hi" || Choice == "hello" || Choice == TamagotchiPet.Name || Choice == $"hi {TamagotchiPet.Name}" || Choice == $"hello {TamagotchiPet.Name}")
     {
         TamagotchiPet.Hi();
     }
@@ -33,12 +47,15 @@ void Actions()
     {
         TamagotchiPet.Teach();
     }
-    else if (Choice == "alive")
-    {
-        TamagotchiPet.GetAlive();
-    }
     else if (Choice == "name")
     {
         TamagotchiPet.NameIt();
     }
+}
+
+void Dead()
+{
+    Console.Clear();
+    Console.WriteLine("it's Dead...");
+    Console.ReadLine();
 }

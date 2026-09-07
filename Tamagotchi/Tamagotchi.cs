@@ -5,9 +5,9 @@ public class Tamagotchi()
     private int Anger = 0;
     private List<string> AngryWords = ["No!", "Hate!", "I really hate you"];
     private List<string> Words = ["Hello!", "Nice!", "Ur so kind!"];
-    private bool Alive = true;
+    public bool Alive = true;
     public string Name = "";
-
+    
     public void Tick()
     {
 
@@ -18,11 +18,16 @@ public class Tamagotchi()
     public void Feed()
     {
         Hunger = 0;
+        Anger -= 2;
+        if (Anger < 0)
+        {
+            Anger = 0;
+        }
     }
     public void Hi()
     {
         ReduceBoredom();
-        if (Name == "loser" || Name == "ugly" || Name == "fat" || Name == "idiot")
+        if (Name == "loser" || Name == "ugly" || Name == "fat" || Name == "idiot" || Name == "")
         {
             Console.WriteLine($"{Name}: {AngryWords[Random.Shared.Next(AngryWords.Count)]}");  
 
@@ -77,18 +82,13 @@ public class Tamagotchi()
     }
     public void GetAlive()
     {
-        if (Hunger > 10)
+        if (Hunger > 9)
         {
             Alive = false;
-        }
-        if (Alive)
-        {
-            Console.WriteLine("it's alive!");
-        }
-        else
-        {
-            Console.WriteLine("it's Dead...");
+            if (Hunger > 9)
+            {
+                Hunger = 10;
+            }
         }
     }
 }
-
